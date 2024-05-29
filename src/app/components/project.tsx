@@ -6,12 +6,24 @@ import { FaCcStripe } from "react-icons/fa6";
 import { IoPrismSharp } from "react-icons/io5";
 import { BiLogoPostgresql } from "react-icons/bi";
 
-const Project = () => {
+export interface ProjectProps {
+  linkToProject: string;
+  linkToGitRepo: string;
+  imageSrc: string;
+  projectName: string;
+}
+
+const Project = ({
+  linkToGitRepo,
+  linkToProject,
+  imageSrc,
+  projectName,
+}: ProjectProps) => {
   return (
-    <div className="text-white flex gap-4">
+    <div className="text-white flex flex-col md:flex-row gap-4 border-t pt-8">
       <div className="">
         <Image
-          src="/project images/blue shop.png"
+          src={imageSrc}
           width={700}
           height={400}
           alt="blue shop project"
@@ -19,22 +31,13 @@ const Project = () => {
       </div>
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-4">
-          <Link
-            href="https://onlinestore-nathancody.vercel.app/store"
-            className="text-3xl font-extrabold"
-          >
-            Online Store Project
+          <Link href={linkToProject} className="text-3xl font-extrabold">
+            {projectName}
           </Link>
-          <Link
-            className="text-blue-400 mr-3"
-            href="https://onlinestore-nathancody.vercel.app/store"
-          >
+          <Link className="text-blue-400 mr-3" href={linkToProject}>
             Link To The Project
           </Link>
-          <Link
-            className="text-blue-400 mr-3"
-            href="https://github.com/Nathan-Roberts123/online-store-nextjs"
-          >
+          <Link className="text-blue-400 mr-3" href={linkToGitRepo}>
             Link To GitHub Repository
           </Link>
         </div>

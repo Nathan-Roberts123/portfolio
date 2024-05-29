@@ -1,9 +1,15 @@
-import { SiNextdotjs } from "react-icons/si";
-import { RiTailwindCssLine } from "react-icons/ri";
-import { FaCcStripe } from "react-icons/fa6";
-import { IoPrismSharp } from "react-icons/io5";
-import { IoLogoReact } from "react-icons/io5";
 import Project from "./components/project";
+import SkillsSection from "./components/skills-section";
+import { ProjectProps } from "./components/project";
+
+const projects: ProjectProps[] = [
+  {
+    projectName: "Onlins Store",
+    linkToProject: "https://onlinestore-nathancody.vercel.app/store",
+    linkToGitRepo: "https://github.com/Nathan-Roberts123/online-store-nextjs",
+    imageSrc: "/project images/blue shop.png",
+  },
+];
 
 export default function Home() {
   return (
@@ -19,34 +25,12 @@ export default function Home() {
           Explore my work, learn about my journey, and let&apos;s connect to
           build something great.
         </h3>
-        <div className="py-6">
-          <h3 className="font-semibold text-xl">Skills</h3>
-          <div className="flex gap-12 justify-center mt-3">
-            <div className="flex flex-col items-center gap-3">
-              <IoLogoReact className="text-5xl" />
-              <span className="text-xl">React</span>
-            </div>
-            <div className="flex flex-col items-center gap-3">
-              <SiNextdotjs className="text-5xl" />
-              <span className="text-xl">Next JS</span>
-            </div>
-            <div className="flex flex-col items-center gap-3">
-              <RiTailwindCssLine className="text-5xl" />
-              <span className="text-xl">Tailwind CSS</span>
-            </div>
-            <div className="flex flex-col items-center gap-3">
-              <FaCcStripe className="text-5xl" />
-              <span className="text-xl">Stripe</span>
-            </div>
-            <div className="flex flex-col items-center gap-3">
-              <IoPrismSharp className="text-5xl" />
-              <span className="text-xl">Prisma</span>
-            </div>
-          </div>
-        </div>
+        <SkillsSection />
       </div>
       <div className="py-16">
-        <Project />
+        {projects.map((project) => {
+          return <Project key={project.projectName} {...project} />;
+        })}
       </div>
     </div>
   );
